@@ -1,11 +1,8 @@
-import React from 'react'
 import { InputDiv } from './styles.js'
 
 export function InputText({ label, change, must, value, placeholder }) {
 
-    const aoChange = (e) => {
-        change(e.target.value)
-    }
+
     
     return (
         <InputDiv>
@@ -14,7 +11,7 @@ export function InputText({ label, change, must, value, placeholder }) {
                 placeholder={placeholder}
                 value={value}
                 required={must}
-                onChange={aoChange}
+                onChange={(e) => change(e.target.value)}
                 name='nome'
                 type="text"
             />

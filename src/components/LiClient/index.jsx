@@ -1,18 +1,24 @@
-import React from 'react'
-import css, { Botoes, ButtonDelet, Li, Texto } from './styles.js'
+import { Buttons, ButtonDelete, Li, TextDiv } from './styles.js'
+import imgWoman from '../../assets/woman.png'
+import imgMan from '../../assets/man.png'
 
-export function LiClient ({ nome, descricao, genero, img, alt }) {
-  return (
-    <Li>
-        <img src={genero} alt={alt} />
-        <Texto>
-            <h2>{nome}</h2>
-            <span>{descricao}</span>
-        </Texto>
-        <Botoes>
-            <button>Abrir cardeneta</button>
-            <ButtonDelet>Deletar</ButtonDelet>
-        </Botoes>
-    </Li>
-  )
+export function LiClient({ client, handleDelete }) {
+
+    const genre = client.genre == 'feminino' ? imgWoman : imgMan
+
+    return (
+        <Li>
+            <img src={genre} alt={client.alt} />
+            <TextDiv>
+                <h2>{client.name}</h2>
+                <span>{client.description}</span>
+            </TextDiv>
+            <Buttons>
+                <button>Abrir cardeneta</button>
+                <ButtonDelete
+                    onClick={() => handleDelete(client.id)}
+                >Deletar</ButtonDelete>
+            </Buttons>
+        </Li>
+    )
 }

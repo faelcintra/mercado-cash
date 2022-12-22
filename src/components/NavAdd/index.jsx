@@ -1,46 +1,49 @@
-import React, { useState } from 'react'
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import { useState } from 'react'
+import {v4 as uuidv4} from 'uuid'
+
 import { InputText } from '../InputText';
 import { SelectGenre } from '../SelectGenre';
-import css, { Botao, Form, Nav } from './styles.js'
-import { storageClient } from '../../storage/storageUsers';
+import { Button, Form, Nav } from './styles.js'
+import { addClient, getAllClients } from '../../storage/storageUsers';
 
-// const clienteStorage = JSON.parse(localStorage.getItem('cliente')) || []
+
 export function NavAdd({ setClients }) {
-
-    const [nome, setNome] = useState('')
-    const [descricao, setDescricao] = useState('')
-    const [genero, setGenero] = useState('')
-
+    
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [genre, setGenre] = useState('')
+    
+    const randomId = () => uuidv4() 
     const objClient = {
-        nome,
-        descricao,
-        genero
+        name,
+        description,
+        genre
     }
 
-    //ao submeter o formulario
     function handleAddClient(e) {
         e.preventDefault()
+        checkClient()
 
-        setClients((state) => {
-            return [...state, objClient]
-        })
-        
-        storageClient(objClient)
-
-        setNome('')
-        setDescricao('')
-        setGenero('')
-
+        setName('')
+        setDescription('')
+        setGenre('')
     }
 
-    // clienteStorage.push(objClient)
-    // localStorage.setItem('cliente', JSON.stringify(clienteStorage))
+    function checkClient() {
+        const clients = getAllClients()
+        const clientFind = clients.find(client => client.name === objClient.name)
+        console.log('array encontrado: ', clientFind);
 
-    //   clienteStorage.forEach( (dados) => {
-    //     localDados(dados)
-
-    // })
+        if (clientFind) {
+            objClient.id = randomId()
+        } else {
+            objClient.id = randomId()
+            addClient(objClient)
+            setClients((state) => {
+                return [...state, objClient]
+            })
+        }
+    }
 
     return (
         <Nav>
@@ -48,26 +51,26 @@ export function NavAdd({ setClients }) {
                 <div>
                     <InputText
                         placeholder='nome do cliente'
-                        value={nome}
-                        change={(value) => setNome(value)}
+                        value={name}
+                        change={(value) => setName(value)}
                         must={true}
                     />
                     <InputText
                         placeholder='descrição do cliente'
-                        value={descricao}
-                        change={(descricao) => setDescricao(descricao)}
+                        value={description}
+                        change={(value) => setDescription(value)}
                         must={false}
                     />
                     <SelectGenre
                         required={true}
-                        value={genero}
-                        change={(genero) => setGenero(genero)}
-
+                        value={genre}
+                        change={(value) => setGenre(value)}
                     />
 
-                    <Botao type="submit">Adicionar</Botao>
+                    <Button type="submit">Adicionar</Button>
                 </div>
             </Form>
         </Nav>
     )
 }
+

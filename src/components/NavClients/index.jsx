@@ -1,43 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+
 import { LiClient } from '../LiClient'
 import { NavAdd } from '../NavAdd'
-import imgWoman from './woman.png'
-import imgMan from './man.png'
-import css, { Section, Ul } from './styles.js'
-import { getAllClients } from '../../storage/storageUsers'
-
+import { Section, Ul } from './styles.js'
+import { getAllClients, removeClient } from '../../storage/storageUsers'
 
 export function NavClients() {
-    
-    const [clientes, setClientes] = useState([])
 
-    function fetchClients () {
+    const [clients, setClients] = useState([])
+
+    function fetchClients() {
         const clients = getAllClients()
-        setClientes(clients)
-        console.log('buscado');
+        setClients(clients)
+        console.log(clients);
+    }
+
+    function handleDelete(id) {
+        const clientRemove = clients.filter(client => client.id != id)
+        setClients(clientRemove)
+
+        console.log(clients);
+
+        removeClient(id)
     }
 
     useEffect(() => {
         fetchClients()
+    }, [setClients])
 
-
-    }, [] )
-    
     return (
         <Section>
-            <NavAdd setClients={setClientes} />
-                {/* // localDados={(dados) => newCLient(dados)}
-                // dados = {(info) => infoLocal(info)} */}
+            <NavAdd setClients={setClients} />
             <Ul>
-                {clientes.map((cliente) => (
-                    <LiClient key={cliente.nome}
-                        nome={cliente.nome}
-                        descricao={cliente.descricao}
-                        genero={cliente.genero == 'feminino' ? imgWoman : imgMan}
+                {clients.map((client) => (
+                    <LiClient
+                        key={client.id}
+                        client={client}
+                        handleDelete={handleDelete}
                     />
                 ))}
             </Ul>
-            {/* <button onClick={fetchClients}>buscar</button> */}
         </Section>
     )
 }

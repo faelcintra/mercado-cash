@@ -22,7 +22,7 @@ export const Form = styled.form`
 }
 `
 
-export const Botao = styled.button`
+export const Button = styled.button`
     padding: 1rem;
     border-radius: 1rem;
     border: none;

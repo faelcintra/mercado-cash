@@ -18,7 +18,7 @@ export const Li = styled.li`
 
 `
 
-export const Texto = styled.div`
+export const TextDiv = styled.div`
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -37,7 +37,7 @@ export const Texto = styled.div`
         }
     
 `
-export const Botoes = styled.div`
+export const Buttons = styled.div`
     display: flex;
 
     button {
@@ -60,7 +60,7 @@ export const Botoes = styled.div`
    
 `
 
-export const ButtonDelet = styled.button`
+export const ButtonDelete = styled.button`
         background-color: #000;
         color: #fafafa;
         margin: 2rem 1rem 0 0;

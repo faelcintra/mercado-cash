@@ -1,5 +1,4 @@
-import React from 'react'
-import css, { Select } from './styles.js'
+import { Select } from './styles.js'
 
 export function SelectGenre({ change, value, required }) {
 
@@ -10,8 +9,6 @@ export function SelectGenre({ change, value, required }) {
 	return (
 		<Select
 			value={value}
-			name=""
-			id=""
 			onChange={changeGenre}
 			required={required}
 		>
