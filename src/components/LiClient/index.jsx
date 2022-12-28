@@ -1,6 +1,7 @@
 import { Buttons, ButtonDelete, Li, TextDiv } from './styles.js'
 import imgWoman from '../../assets/woman.png'
 import imgMan from '../../assets/man.png'
+import { Link } from 'react-router-dom'
 
 export function LiClient({ client, handleDelete }) {
 
@@ -14,7 +15,9 @@ export function LiClient({ client, handleDelete }) {
                 <span>{client.description}</span>
             </TextDiv>
             <Buttons>
-                <button>Abrir cardeneta</button>
+                <Link to={`/shoppingcart/${client.id}`}>
+                    <button>Abrir cardeneta</button>
+                </Link>
                 <ButtonDelete
                     onClick={() => handleDelete(client.id)}
                 >Deletar</ButtonDelete>

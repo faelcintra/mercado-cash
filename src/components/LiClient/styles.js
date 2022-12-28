@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Li = styled.li`
     display: flex;
-    background-color: #3a3a3a;
+    background-color: #2e2e2e;
     width: 40vw;
     border-radius: 1rem;
     align-items: center;
@@ -41,8 +41,8 @@ export const Buttons = styled.div`
     display: flex;
 
     button {
-        background-color: #000;
-        color: #fafafa;
+        background-color: #fafafa;
+        color: #000;
         margin: 2rem 1rem 0 0;
         cursor: pointer;
         padding: 1rem;
@@ -50,8 +50,8 @@ export const Buttons = styled.div`
         border: none;
         :hover {
             scale: 1.1;
-            background-color: #fafafa;
-            color: #000;
+            background-color: #000;
+            color: #fafafa;
         } 
         :last-child:hover {
             background-color: #f3504f;

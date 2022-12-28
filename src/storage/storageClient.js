@@ -18,7 +18,7 @@ export function addClient(client) {
 export function removeClient(id) {
     const storage = getAllClients()
 
-    const newStorage = storage.filter(client => client.id != id)
+    const newStorage = storage.filter(client => client.id !== id)
     
     const newStorageAsString = JSON.stringify(newStorage)
 

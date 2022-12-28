@@ -1,9 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { NavAdd } from '../../components/NavAdd';
 import { NavClients } from '../../components/NavClients';
 
-export default function Home() {
+export default function Home({client}) {
   return (
         <div>
           <NavClients />

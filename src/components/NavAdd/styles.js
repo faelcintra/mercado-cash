@@ -5,14 +5,13 @@ export const Nav = styled.nav`
     padding: 2rem;
     display: flex;
     justify-content: center;
-    background-color: #fafafa;
+    background-color: #2e2e2e;
+
     border-radius: 1rem;
     box-sizing: border-box;
     
 `
 export const Form = styled.form`
-    display: flex;
-    justify-content: center;
     border-radius: 1rem;
     div {
         justify-content: center;

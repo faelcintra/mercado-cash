@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { LiClient } from '../LiClient'
 import { NavAdd } from '../NavAdd'
 import { Section, Ul } from './styles.js'
-import { getAllClients, removeClient } from '../../storage/storageUsers'
+import { getAllClients, removeClient } from '../../storage/storageClient'
 
 export function NavClients() {
 
@@ -13,10 +13,10 @@ export function NavClients() {
         const clients = getAllClients()
         setClients(clients)
         console.log(clients);
-    }
+    }  
 
     function handleDelete(id) {
-        const clientRemove = clients.filter(client => client.id != id)
+        const clientRemove = clients.filter(client => client.id !== id)
         setClients(clientRemove)
 
         console.log(clients);

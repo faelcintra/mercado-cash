@@ -1,19 +1,17 @@
 import { useState } from 'react'
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 import { InputText } from '../InputText';
 import { SelectGenre } from '../SelectGenre';
 import { Button, Form, Nav } from './styles.js'
-import { addClient, getAllClients } from '../../storage/storageUsers';
-
+import { addClient, getAllClients } from '../../storage/storageClient';
 
 export function NavAdd({ setClients }) {
-    
+
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [genre, setGenre] = useState('')
-    
-    const randomId = () => uuidv4() 
+
     const objClient = {
         name,
         description,
@@ -22,27 +20,27 @@ export function NavAdd({ setClients }) {
 
     function handleAddClient(e) {
         e.preventDefault()
-        checkClient()
+        checkClient(objClient)
 
         setName('')
         setDescription('')
         setGenre('')
     }
 
-    function checkClient() {
+    function checkClient(obj) {
         const clients = getAllClients()
-        const clientFind = clients.find(client => client.name === objClient.name)
-        console.log('array encontrado: ', clientFind);
+        const findClient = clients.find(client => client.name === obj.name)
 
-        if (clientFind) {
-            objClient.id = randomId()
+        if (findClient) {
+            obj.id = uuidv4()
         } else {
-            objClient.id = randomId()
+            obj.id = uuidv4()
             addClient(objClient)
             setClients((state) => {
                 return [...state, objClient]
             })
         }
+        
     }
 
     return (

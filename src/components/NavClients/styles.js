@@ -12,7 +12,7 @@ export const Section = styled.section`
 export const Ul = styled.ul`
     margin-top: 1rem;
     width: 50vw;
-    background-color: #fafafa;
+    background-color: #2e2e2e;
     border-radius: 1rem;
     flex-wrap:wrap;
     display: flex;
