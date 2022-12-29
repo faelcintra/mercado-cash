@@ -8,7 +8,7 @@ export function InitialRoutes() {
         <BrowserRouter>
             <Routes>
                 <Route path='/home' element={<Home />}/>
-                <Route path='/shoppingcart/:id' element={<ShoppingCart client={(cliente) => cliente}/>}  />
+                <Route path='/shoppingcart/:idClient' element={<ShoppingCart client={(cliente) => cliente}/>}  />
             </Routes>
         </BrowserRouter>
     )

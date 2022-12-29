@@ -13,39 +13,41 @@ export function AddProduct({ setProducts }) {
 
     const [name, setName] = useState('')
     const [amount, setAmount] = useState('')
-    const { id } = useParams()
+    const { idClient } = useParams()
 
     const clients = getAllClients()
-    const getIdClient = clients.find(client => client.id === id)
+    const getIdClient = clients.find(client => client.id === idClient)
 
     const objProduct = {
         name,
-        amount
+        amount,
+        id: uuidv4(),
+        clientId: idClient
     }
 
     function handleAddProduct(e) {
         e.preventDefault()
-        checkProducts(objProduct)
-
+        // checkProducts(objProduct)
+        postProducts(objProduct)
+        setProducts((products) => {
+            return [...products, objProduct]
+        })
         setName('')
         setAmount('')
     }
 
-    function checkProducts(obj) {
-        const products = getProducts()
-        const findProduct = products.find(product => product.name === obj.name)
+    // function checkProducts(obj) {
+    //     const products = getProducts()
+    //     const findProduct = products.find(product => product.name === obj.name)
 
-        if (findProduct) {
-            obj.id = uuidv4()
-        } else {
-            obj.id = uuidv4()
-            postProducts(objProduct)
-            setProducts((products) => {
-                return [...products, objProduct]
-            })
-        }
+    //     if (findProduct) {
+    //         obj.id = uuidv4()
+    //     } else {
+    //         obj.id = uuidv4()
 
-    }
+    //     }
+
+    // }
 
     return (
         <Card onSubmit={handleAddProduct}>
@@ -60,18 +62,18 @@ export function AddProduct({ setProducts }) {
 
                 <InputAdd>
                     <input
-                        onChange={(value) => setName(value.target.value)}
-                        value={name}
-                        type="text"
-                        required={true}
-                        placeholder="digite o produto"
-                    />
-                    <input
                         onChange={(value) => setAmount(value.target.value)}
                         value={amount}
                         type="text"
                         required={true}
                         placeholder="quantidade"
+                    />
+                    <input
+                        onChange={(value) => setName(value.target.value)}
+                        value={name}
+                        type="text"
+                        required={true}
+                        placeholder="digite o produto"
                     />
                     <button>Adicionar ao carrinho</button>
                 </InputAdd>

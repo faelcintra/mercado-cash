@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const Li = styled.li`
     display: flex;
     background-color: #2e2e2e;
-    width: 40vw;
+    width: 50vw;
     border-radius: 1rem;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    margin: 0.5rem 0;
+    margin: 5px auto;
     position: relative;
 
     img {

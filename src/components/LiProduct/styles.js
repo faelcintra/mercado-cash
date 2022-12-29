@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Li = styled.li `
     box-sizing: border-box;
     padding: 1rem;
-    margin-top: 1rem;
+    margin: 5px auto 0;
     border-radius: 1rem;
     height: 4vw;
     display: flex;

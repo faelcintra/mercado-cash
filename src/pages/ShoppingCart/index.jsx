@@ -5,24 +5,27 @@ import {
 import LiProduct from "../../components/LiProduct";
 
 import { AddProduct } from "../../components/AddProduct";
-import { getProducts, removeProduct } from "../../storage/storageProduct";
+import { getProducts, getProductsByClientId, removeProduct } from "../../storage/storageProduct";
+import { useParams } from "react-router-dom";
 
 export function ShoppingCart() {
 
     const [products, setProducts] = useState([])
 
+    const {idClient} = useParams()
+
     function fetchProducts() {
-        const products = getProducts()
+        const products = getProductsByClientId(idClient)
         setProducts(products)
         console.log('array alterado: ',products);
     }
 
-    function handleDelete(id) {
-            const products = getProducts()
-            const productRemove = products.filter(product => product.id !== id)
+    function handleDelete(idd) {
+            const products = getProductsByClientId(idClient)
+            const productRemove = products.filter(product => product.id !== idd)
 
             setProducts(productRemove)
-            removeProduct(id)
+            removeProduct(idd)
     }
 
     useEffect(() => {

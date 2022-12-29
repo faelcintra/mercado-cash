@@ -48,7 +48,7 @@ export const InputAdd = styled.div`
     box-sizing: border-box;
     bottom: 0;
 
-    input:first-child{
+    input:nth-child(2){
         box-sizing: border-box;
         margin: 0 1rem;
         border-radius: 1rem;
@@ -64,7 +64,7 @@ export const InputAdd = styled.div`
         }
     }
 
-    input:nth-child(2) {
+    input:first-child {
         box-sizing: border-box;
         margin: 0 1rem;
         text-align: center;

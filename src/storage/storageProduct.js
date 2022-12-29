@@ -27,3 +27,11 @@ export function removeProduct(id) {
 
     localStorage.setItem(productKey, newLocalAsString)
 }
+
+export function getProductsByClientId (clientId) {
+    const products = getProducts()
+    
+    const clientProducts = products.filter(product => product.clientId === clientId)
+
+    return clientProducts
+}
